@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academics & Faculty | Pakistan School Seeb</title>
+  <meta name="description" content="Explore academic programmes, faculty directory, and academic calendar at Pakistan School Seeb.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-mesh" aria-hidden="true"></div>
+
+  <nav class="navbar" role="navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.jpg" alt="Pakistan School Seeb" class="logo-img" width="42" height="42">
+        <div>
+          <span>Pakistan School</span>
+          <small style="display:block;font-size:0.7rem;font-weight:500;opacity:0.7">SEEB</small>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="academics.html" class="active">Academics</a></li>
+        <li><a href="gallery.html">Student Life</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"></button>
+        <button class="btn btn-sm btn-secondary" id="portal-btn">Portals</button>
+        <a href="admissions.html" class="btn btn-sm btn-primary">Apply Now</a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="admissions.html">Admissions</a>
+    <a href="academics.html" class="active">Academics</a>
+    <a href="gallery.html">Student Life</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+    <section class="page-hero">
+      <div class="hero-pattern"></div>
+      <div class="container" style="position:relative;z-index:2">
+        <h1>Academics & Faculty</h1>
+        <p>Rigorous programmes, dedicated educators, and a calendar built around student success.</p>
+      </div>
+    </section>
+
+    <!-- Faculty Directory -->
+    <section class="section" id="faculty">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">People</div>
+          <h2>Faculty Directory</h2>
+          <p>Meet the educators shaping tomorrow's leaders at Pakistan School Seeb.</p>
+        </div>
+        <div class="faculty-filters">
+          <button class="chip active" data-dept="all">All</button>
+          <button class="chip" data-dept="leadership">Leadership</button>
+          <button class="chip" data-dept="sciences">Sciences</button>
+          <button class="chip" data-dept="languages">Languages</button>
+          <button class="chip" data-dept="mathematics">Mathematics</button>
+          <button class="chip" data-dept="humanities">Humanities</button>
+          <button class="chip" data-dept="junior">Junior Wing</button>
+        </div>
+        <div class="faculty-grid" id="faculty-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Calendar -->
+    <section class="section" style="background:var(--bg-secondary)" id="calendar">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">Calendar</div>
+          <h2>Academic Calendar 2025–26</h2>
+          <p>Key dates for terms, examinations, and holidays. Download the full PDF schedule.</p>
+        </div>
+        <div style="max-width:720px;margin:0 auto">
+          <div class="glass-card" style="padding:0;overflow:hidden">
+            <div style="display:flex;border-bottom:1px solid var(--border-glass)">
+              <div style="flex:1;padding:1rem 1.25rem;border-right:1px solid var(--border-glass)">
+                <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em">Term 1</div>
+                <div style="font-weight:700;font-size:1.1rem;margin-top:0.25rem">Sep 2025 – Dec 2025</div>
+              </div>
+              <div style="flex:1;padding:1rem 1.25rem;border-right:1px solid var(--border-glass)">
+                <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em">Term 2</div>
+                <div style="font-weight:700;font-size:1.1rem;margin-top:0.25rem">Jan 2026 – Mar 2026</div>
+              </div>
+              <div style="flex:1;padding:1rem 1.25rem">
+                <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em">Term 3</div>
+                <div style="font-weight:700;font-size:1.1rem;margin-top:0.25rem">Apr 2026 – Jun 2026</div>
+              </div>
+            </div>
+            <div style="padding:1.5rem">
+              <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border-glass)">
+                <div style="min-width:70px;text-align:center">
+                  <div style="font-family:'Space Grotesk';font-weight:700;color:var(--pk-emerald);font-size:1.25rem">01</div>
+                  <div style="font-size:0.7rem;color:var(--text-muted)">SEP</div>
+                </div>
+                <div>
+                  <strong>Academic Year Begins</strong>
+                  <p style="font-size:0.9rem;color:var(--text-secondary);margin:0.2rem 0 0">Orientation for new students & first day of classes</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border-glass)">
+                <div style="min-width:70px;text-align:center">
+                  <div style="font-family:'Space Grotesk';font-weight:700;color:var(--pk-emerald);font-size:1.25rem">15</div>
+                  <div style="font-size:0.7rem;color:var(--text-muted)">SEP</div>
+                </div>
+                <div>
+                  <strong>Mid-Term Assessments (Grades 9–12)</strong>
+                  <p style="font-size:0.9rem;color:var(--text-secondary);margin:0.2rem 0 0">FBISE pathway internal examinations</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border-glass)">
+                <div style="min-width:70px;text-align:center">
+                  <div style="font-family:'Space Grotesk';font-weight:700;color:var(--pk-emerald);font-size:1.25rem">20</div>
+                  <div style="font-size:0.7rem;color:var(--text-muted)">DEC</div>
+                </div>
+                <div>
+                  <strong>Winter Break Begins</strong>
+                  <p style="font-size:0.9rem;color:var(--text-secondary);margin:0.2rem 0 0">School reopens early January</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border-glass)">
+                <div style="min-width:70px;text-align:center">
+                  <div style="font-family:'Space Grotesk';font-weight:700;color:var(--pk-emerald);font-size:1.25rem">23</div>
+                  <div style="font-size:0.7rem;color:var(--text-muted)">MAR</div>
+                </div>
+                <div>
+                  <strong>Pakistan Day</strong>
+                  <p style="font-size:0.9rem;color:var(--text-secondary);margin:0.2rem 0 0">Campus celebrations & cultural programme</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <div style="min-width:70px;text-align:center">
+                  <div style="font-family:'Space Grotesk';font-weight:700;color:var(--pk-emerald);font-size:1.25rem">15</div>
+                  <div style="font-size:0.7rem;color:var(--text-muted)">JUN</div>
+                </div>
+                <div>
+                  <strong>Final Examinations & Academic Year Ends</strong>
+                  <p style="font-size:0.9rem;color:var(--text-secondary);margin:0.2rem 0 0">Board exams as per FBISE / Cambridge schedule</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-3">
+            <a href="#" class="btn btn-primary" onclick="showToast('Full academic calendar PDF will be available from the office.');return false">Download Full Calendar (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curriculum Overview -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">Pathways</div>
+          <h2>Curriculum Pathways</h2>
+        </div>
+        <div class="stream-grid">
+          <div class="glass-card stream-card">
+            <h3>FBISE Stream</h3>
+            <p>Federal Board of Intermediate and Secondary Education, Islamabad. SSC (9–10) and HSSC (11–12) with Science and Arts groups.</p>
+            <ul class="stream-features">
+              <li>National curriculum alignment</li>
+              <li>Recognised across Pakistan & GCC</li>
+              <li>Strong board exam preparation</li>
+              <li>Subject specialists for senior grades</li>
+            </ul>
+          </div>
+          <div class="glass-card stream-card">
+            <h3>Cambridge Stream</h3>
+            <p>Cambridge International pathways including IGCSE options for students aiming at global universities.</p>
+            <ul class="stream-features">
+              <li>International recognition</li>
+              <li>Skills-focused assessment</li>
+              <li>Flexible subject combinations</li>
+              <li>University counselling support</li>
+            </ul>
+          </div>
+          <div class="glass-card stream-card">
+            <h3>Junior Foundation</h3>
+            <p>Kindergarten through Grade 5 with emphasis on literacy, numeracy, inquiry, and character development.</p>
+            <ul class="stream-features">
+              <li>Activity-based learning</li>
+              <li>Smartboard-enabled classrooms</li>
+              <li>Specialist KG faculty</li>
+              <li>Continuous assessment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="assets/logo.jpg" alt="Pakistan School Seeb" class="logo-img" width="42" height="42">
+            <span style="color:white">Pakistan School Seeb</span>
+          </div>
+          <p>Nurturing future leaders in Al Seeb, Muscat.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="gallery.html">Student Life</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem">Building 356, Way 5889, Al Seeb</li>
+            <li><a href="tel:+96824464345">+968 2446 4345</a></li>
+            <li><a href="mailto:principal.seeb@pakistanschool.edu.om">principal.seeb@pakistanschool.edu.om</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Leadership</h4>
+          <ul>
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem">Principal: Mr. Saqib Ali Shah</li>
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem">Under Pakistan Schools Oman Board</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Pakistan School Seeb · Pakistan Schools Oman</span>
+        <span>Light the Torch for Knowledge</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="portal-modal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <button class="modal-close" aria-label="Close">×</button>
+      <h3>Quick Portals</h3>
+      <div class="portal-links" style="margin-top:1rem">
+        <a href="https://www.pakistanschool.edu.om/" target="_blank" rel="noopener" class="portal-link">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg></div>
+          <div><strong>Student LMS</strong><span>Learning management</span></div>
+        </a>
+        <a href="https://www.pakistanschool.edu.om/" target="_blank" rel="noopener" class="portal-link">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div><strong>Parent Portal</strong><span>Fees & progress</span></div>
+        </a>
+        <a href="https://www.pakistanschool.edu.om/" target="_blank" rel="noopener" class="portal-link">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><strong>Staff Webmail</strong><span>Official email</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const faculty = [
+      { name: 'Mr. Saqib Ali Shah', role: 'Principal', dept: 'leadership', quals: ['M.Ed', 'B.Ed'], email: 'principal.seeb@pakistanschool.edu.om' },
+      { name: 'Ms. Ayesha Malik', role: 'Vice Principal', dept: 'leadership', quals: ['M.A', 'B.Ed'], email: '' },
+      { name: 'Dr. Imran Qureshi', role: 'Head of Sciences', dept: 'sciences', quals: ['Ph.D', 'M.Sc'], email: '' },
+      { name: 'Mrs. Fatima Rahman', role: 'Senior Science Teacher', dept: 'sciences', quals: ['M.Sc', 'B.Ed'], email: '' },
+      { name: 'Mr. Hassan Ali', role: 'Mathematics Coordinator', dept: 'mathematics', quals: ['M.Sc Math', 'B.Ed'], email: '' },
+      { name: 'Ms. Sana Khan', role: 'English Language Lead', dept: 'languages', quals: ['M.A English', 'CELTA'], email: '' },
+      { name: 'Mr. Tariq Mahmood', role: 'Urdu & Islamic Studies', dept: 'languages', quals: ['M.A Urdu', 'B.Ed'], email: '' },
+      { name: 'Mrs. Nadia Hussain', role: 'Junior Wing Coordinator', dept: 'junior', quals: ['B.Ed', 'Early Years Dip.'], email: '' },
+      { name: 'Ms. Zara Ahmed', role: 'KG Specialist', dept: 'junior', quals: ['B.Ed', 'Montessori'], email: '' },
+      { name: 'Mr. Bilal Raza', role: 'History & Geography', dept: 'humanities', quals: ['M.A History', 'B.Ed'], email: '' },
+      { name: 'Mrs. Samina Akhtar', role: 'Computer Science', dept: 'sciences', quals: ['M.Sc CS', 'B.Ed'], email: '' },
+      { name: 'Mr. Omar Farooq', role: 'Physical Education', dept: 'humanities', quals: ['B.P.Ed'], email: '' },
+    ];
+
+    const grid = document.getElementById('faculty-grid');
+    function renderFaculty(filter) {
+      const list = filter === 'all' ? faculty : faculty.filter(f => f.dept === filter);
+      grid.innerHTML = list.map(f => `
+        <div class="glass-card faculty-card" data-dept="${f.dept}">
+          <div class="faculty-avatar">${f.name.split(' ').map(n => n[0]).slice(0,2).join('')}</div>
+          <h3>${f.name}</h3>
+          <div class="faculty-role">${f.role}</div>
+          <div class="faculty-dept">${f.dept.charAt(0).toUpperCase() + f.dept.slice(1)}</div>
+          <div class="qual-badges">${f.quals.map(q => `<span class="qual-badge">${q}</span>`).join('')}</div>
+          ${f.email ? `<a href="mailto:${f.email}" class="btn btn-sm btn-secondary">Contact</a>` : ''}
+        </div>
+      `).join('');
+    }
+    renderFaculty('all');
+
+    document.querySelectorAll('.faculty-filters .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.faculty-filters .chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        renderFaculty(chip.dataset.dept);
+      });
+    });
+  </script>
+</body>
+</html>
