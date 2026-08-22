@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Life & Gallery | Pakistan School Seeb</title>
+  <meta name="description" content="Explore campus life, sports, science fairs, national celebrations and art at Pakistan School Seeb.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-mesh" aria-hidden="true"></div>
+
+  <nav class="navbar" role="navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.jpg" alt="Pakistan School Seeb" class="logo-img" width="42" height="42">
+        <div>
+          <span>Pakistan School</span>
+          <small style="display:block;font-size:0.7rem;font-weight:500;opacity:0.7">SEEB</small>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="academics.html">Academics</a></li>
+        <li><a href="gallery.html" class="active">Student Life</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"></button>
+        <button class="btn btn-sm btn-secondary" id="portal-btn">Portals</button>
+        <a href="admissions.html" class="btn btn-sm btn-primary">Apply Now</a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="admissions.html">Admissions</a>
+    <a href="academics.html">Academics</a>
+    <a href="gallery.html" class="active">Student Life</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+    <section class="page-hero">
+      <div class="hero-pattern"></div>
+      <div class="container" style="position:relative;z-index:2">
+        <h1>Student Life & Gallery</h1>
+        <p>Moments of learning, celebration, sport and creativity from the Pakistan School Seeb community.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="gallery-filters">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="sports">Sports</button>
+          <button class="chip" data-filter="science">Science Fairs</button>
+          <button class="chip" data-filter="national">National Days</button>
+          <button class="chip" data-filter="arts">Art & Culture</button>
+          <button class="chip" data-filter="events">Events</button>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-category="sports" data-title="Inter-House Football Final" data-date="March 2025">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+            <div class="gallery-overlay"><h4>Inter-House Football Final</h4><span>March 2025 · Sports</span></div>
+          </div>
+          <div class="gallery-item" data-category="science" data-title="Annual Science Fair" data-date="October 2025">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.7 3h10a2 2 0 0 0 1.7-3L14 9.5V3"/><path d="M8.5 14h7"/></svg></div>
+            <div class="gallery-overlay"><h4>Annual Science Fair</h4><span>October 2025 · Science</span></div>
+          </div>
+          <div class="gallery-item" data-category="national" data-title="Pakistan Day Celebrations" data-date="23 March 2025">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+            <div class="gallery-overlay"><h4>Pakistan Day Celebrations</h4><span>23 March 2025 · National</span></div>
+          </div>
+          <div class="gallery-item" data-category="arts" data-title="Art Exhibition" data-date="February 2025">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.3-1 1-1.8-.4-1 .2-1.3.8-1.3 2.2 0 4-1.8 4-4 0-5.5-4.5-10-10-10z"/></svg></div>
+            <div class="gallery-overlay"><h4>Student Art Exhibition</h4><span>February 2025 · Arts</span></div>
+          </div>
+          <div class="gallery-item" data-category="sports" data-title="Cricket Tournament" data-date="January 2025">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg></div>
+            <div class="gallery-overlay"><h4>Inter-School Cricket</h4><span>January 2025 · Sports</span></div>
+          </div>
+          <div class="gallery-item" data-category="events" data-title="Annual Day" data-date="December 2024">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20"/><path d="M5 20V10l7-6 7 6v10"/><path d="M9 20v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5"/></svg></div>
+            <div class="gallery-overlay"><h4>Annual Day Performance</h4><span>December 2024 · Events</span></div>
+          </div>
+          <div class="gallery-item" data-category="science" data-title="Robotics Workshop" data-date="November 2024">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="9" width="14" height="11" rx="2"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/><circle cx="9.5" cy="14" r="1"/><circle cx="14.5" cy="14" r="1"/></svg></div>
+            <div class="gallery-overlay"><h4>Robotics Club Workshop</h4><span>November 2024 · Science</span></div>
+          </div>
+          <div class="gallery-item" data-category="national" data-title="Independence Day" data-date="14 August 2025">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+            <div class="gallery-overlay"><h4>Independence Day Assembly</h4><span>14 August 2025 · National</span></div>
+          </div>
+          <div class="gallery-item" data-category="arts" data-title="Literary Society" data-date="April 2025">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <div class="gallery-overlay"><h4>Literary Society Debate</h4><span>April 2025 · Arts</span></div>
+          </div>
+          <div class="gallery-item" data-category="sports" data-title="Basketball League" data-date="February 2025">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93c4.5 4.5 9.64 4.5 14.14 0"/><path d="M12 2v20"/></svg></div>
+            <div class="gallery-overlay"><h4>Basketball House League</h4><span>February 2025 · Sports</span></div>
+          </div>
+          <div class="gallery-item" data-category="events" data-title="Parent Day" data-date="May 2025">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="gallery-overlay"><h4>Parents' Day Open House</h4><span>May 2025 · Events</span></div>
+          </div>
+          <div class="gallery-item" data-category="science" data-title="STEM Innovation Day" data-date="March 2025">
+            <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div>
+            <div class="gallery-overlay"><h4>STEM Innovation Day</h4><span>March 2025 · Science</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clubs & Activities -->
+    <section class="section" style="background:var(--bg-secondary)">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">Activities</div>
+          <h2>Clubs & Societies</h2>
+          <p>Beyond the classroom — leadership, creativity and teamwork.</p>
+        </div>
+        <div class="facilities-grid">
+          <div class="glass-card" style="padding:1.5rem">
+            <div class="club-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+            <h3 style="margin-bottom:0.4rem">Sports Club</h3>
+            <p style="font-size:0.9rem;color:var(--text-secondary)">Football, cricket, basketball and tennis teams competing in inter-house and inter-school events.</p>
+          </div>
+          <div class="glass-card" style="padding:1.5rem">
+            <div class="club-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="9" width="14" height="11" rx="2"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/><circle cx="9.5" cy="14" r="1"/><circle cx="14.5" cy="14" r="1"/></svg></div>
+            <h3 style="margin-bottom:0.4rem">Robotics & Coding</h3>
+            <p style="font-size:0.9rem;color:var(--text-secondary)">Hands-on robotics kits, coding workshops and participation in regional STEM challenges.</p>
+          </div>
+          <div class="glass-card" style="padding:1.5rem">
+            <div class="club-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <h3 style="margin-bottom:0.4rem">Literary Society</h3>
+            <p style="font-size:0.9rem;color:var(--text-secondary)">Debates, creative writing, school magazine and public speaking competitions.</p>
+          </div>
+          <div class="glass-card" style="padding:1.5rem">
+            <div class="club-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20"/><path d="M5 20V10l7-6 7 6v10"/><path d="M9 20v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5"/></svg></div>
+            <h3 style="margin-bottom:0.4rem">Drama & Arts</h3>
+            <p style="font-size:0.9rem;color:var(--text-secondary)">Stage performances, art exhibitions and cultural showcases throughout the year.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="assets/logo.jpg" alt="Pakistan School Seeb" class="logo-img" width="42" height="42">
+            <span style="color:white">Pakistan School Seeb</span>
+          </div>
+          <p>Nurturing future leaders in Al Seeb, Muscat.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="gallery.html">Student Life</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem">Building 356, Way 5889, Al Seeb</li>
+            <li><a href="tel:+96824464345">+968 2446 4345</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <ul>
+            <li><a href="https://www.pakistanschool.edu.om/" target="_blank" rel="noopener">Main Website</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Pakistan School Seeb · Pakistan Schools Oman</span>
+        <span>Light the Torch for Knowledge</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <div class="lightbox-content"></div>
+  </div>
+
+  <div class="modal-overlay" id="portal-modal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <button class="modal-close" aria-label="Close">×</button>
+      <h3>Quick Portals</h3>
+      <div class="portal-links" style="margin-top:1rem">
+        <a href="https://www.pakistanschool.edu.om/" target="_blank" rel="noopener" class="portal-link">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg></div>
+          <div><strong>Student LMS</strong><span>Learning management</span></div>
+        </a>
+        <a href="https://www.pakistanschool.edu.om/" target="_blank" rel="noopener" class="portal-link">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div><strong>Parent Portal</strong><span>Fees & progress</span></div>
+        </a>
+        <a href="https://www.pakistanschool.edu.om/" target="_blank" rel="noopener" class="portal-link">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><strong>Staff Webmail</strong><span>Official email</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
