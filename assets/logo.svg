@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Shield / Crest base -->
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#01411C"/>
+      <stop offset="100%" stop-color="#00A859"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer shield -->
+  <path d="M60 8 L108 28 L108 62 C108 88 86 108 60 116 C34 108 12 88 12 62 L12 28 Z" fill="url(#g1)" stroke="#D4AF37" stroke-width="2.5"/>
+  <!-- Inner field -->
+  <path d="M60 18 L98 34 L98 60 C98 82 80 98 60 105 C40 98 22 82 22 60 L22 34 Z" fill="#FFFFFF" opacity="0.12"/>
+  <!-- Crescent -->
+  <circle cx="52" cy="48" r="16" fill="#FFFFFF"/>
+  <circle cx="58" cy="45" r="13" fill="#01411C"/>
+  <!-- Star -->
+  <path d="M78 42 L80.5 49.5 L88.5 49.5 L82 54.5 L84.5 62 L78 57.5 L71.5 62 L74 54.5 L67.5 49.5 L75.5 49.5 Z" fill="#D4AF37"/>
+  <!-- Book / open pages -->
+  <path d="M42 72 L60 66 L78 72 L78 88 L60 94 L42 88 Z" fill="#FFFFFF" opacity="0.95"/>
+  <path d="M60 66 L60 94" stroke="#01411C" stroke-width="1.5"/>
+  <path d="M48 76 L56 73.5" stroke="#01411C" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M48 81 L56 78.5" stroke="#01411C" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M64 73.5 L72 76" stroke="#01411C" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M64 78.5 L72 81" stroke="#01411C" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Banner -->
+  <rect x="28" y="100" width="64" height="12" rx="2" fill="url(#g2)"/>
+  <text x="60" y="109" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" font-weight="700" fill="#01411C">SEEB</text>
+</svg>
