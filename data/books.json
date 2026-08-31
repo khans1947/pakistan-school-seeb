@@ -1,0 +1,157 @@
+{
+  "updated": "2026-08-23",
+  "note": "Prices in OMR. Each grade shows a full book set price. Expand a set to see individual books.",
+  "bookstoreHours": "Sunday–Thursday, 8:00 AM – 12:30 PM",
+  "sets": [
+    {
+      "grade": "KG",
+      "title": "Kindergarten Full Book Set",
+      "setPrice": 6.500,
+      "stock": "in",
+      "books": [
+        {"title": "KG English Activity Book", "subject": "English", "publisher": "School Series", "price": 2.500, "stock": "in"},
+        {"title": "KG Maths Workbook", "subject": "Mathematics", "publisher": "School Series", "price": 2.250, "stock": "in"},
+        {"title": "Urdu Qaida (KG)", "subject": "Urdu", "publisher": "FBISE Aligned", "price": 1.750, "stock": "low"}
+      ]
+    },
+    {
+      "grade": "1",
+      "title": "Grade 1 Full Book Set",
+      "setPrice": 11.750,
+      "stock": "in",
+      "books": [
+        {"title": "English Reader Grade 1", "subject": "English", "publisher": "Oxford", "price": 3.500, "stock": "in"},
+        {"title": "Maths Book Grade 1", "subject": "Mathematics", "publisher": "School Series", "price": 3.000, "stock": "in"},
+        {"title": "General Knowledge / Science G1", "subject": "Science", "publisher": "School Series", "price": 2.750, "stock": "in"},
+        {"title": "Urdu Reader Grade 1", "subject": "Urdu", "publisher": "FBISE Aligned", "price": 2.500, "stock": "out"}
+      ]
+    },
+    {
+      "grade": "2",
+      "title": "Grade 2 Full Book Set",
+      "setPrice": 7.000,
+      "stock": "in",
+      "books": [
+        {"title": "English Reader Grade 2", "subject": "English", "publisher": "Oxford", "price": 3.750, "stock": "in"},
+        {"title": "Maths Book Grade 2", "subject": "Mathematics", "publisher": "School Series", "price": 3.250, "stock": "in"}
+      ]
+    },
+    {
+      "grade": "3",
+      "title": "Grade 3 Full Book Set",
+      "setPrice": 11.250,
+      "stock": "low",
+      "books": [
+        {"title": "English Reader Grade 3", "subject": "English", "publisher": "Oxford", "price": 4.000, "stock": "low"},
+        {"title": "Maths Book Grade 3", "subject": "Mathematics", "publisher": "School Series", "price": 3.500, "stock": "in"},
+        {"title": "Science Textbook Grade 3", "subject": "Science", "publisher": "School Series", "price": 3.750, "stock": "in"}
+      ]
+    },
+    {
+      "grade": "4",
+      "title": "Grade 4 Full Book Set",
+      "setPrice": 8.000,
+      "stock": "out",
+      "books": [
+        {"title": "English Reader Grade 4", "subject": "English", "publisher": "Oxford", "price": 4.250, "stock": "in"},
+        {"title": "Maths Book Grade 4", "subject": "Mathematics", "publisher": "School Series", "price": 3.750, "stock": "out"}
+      ]
+    },
+    {
+      "grade": "5",
+      "title": "Grade 5 Full Book Set",
+      "setPrice": 8.500,
+      "stock": "in",
+      "books": [
+        {"title": "English Reader Grade 5", "subject": "English", "publisher": "Oxford", "price": 4.500, "stock": "in"},
+        {"title": "Science Textbook Grade 5", "subject": "Science", "publisher": "School Series", "price": 4.000, "stock": "in"}
+      ]
+    },
+    {
+      "grade": "6",
+      "title": "Grade 6 Full Book Set",
+      "setPrice": 14.250,
+      "stock": "in",
+      "books": [
+        {"title": "English Textbook Grade 6", "subject": "English", "publisher": "FBISE", "price": 5.000, "stock": "in"},
+        {"title": "Mathematics Grade 6", "subject": "Mathematics", "publisher": "FBISE", "price": 4.750, "stock": "in"},
+        {"title": "General Science Grade 6", "subject": "Science", "publisher": "FBISE", "price": 4.500, "stock": "low"}
+      ]
+    },
+    {
+      "grade": "7",
+      "title": "Grade 7 Full Book Set",
+      "setPrice": 10.250,
+      "stock": "in",
+      "books": [
+        {"title": "English Textbook Grade 7", "subject": "English", "publisher": "FBISE", "price": 5.250, "stock": "in"},
+        {"title": "Mathematics Grade 7", "subject": "Mathematics", "publisher": "FBISE", "price": 5.000, "stock": "in"}
+      ]
+    },
+    {
+      "grade": "8",
+      "title": "Grade 8 Full Book Set",
+      "setPrice": 10.750,
+      "stock": "out",
+      "books": [
+        {"title": "English Textbook Grade 8", "subject": "English", "publisher": "FBISE", "price": 5.500, "stock": "in"},
+        {"title": "Mathematics Grade 8", "subject": "Mathematics", "publisher": "FBISE", "price": 5.250, "stock": "out"}
+      ]
+    },
+    {
+      "grade": "9",
+      "title": "Grade 9 (SSC-I) Science Group Set",
+      "setPrice": 29.750,
+      "stock": "in",
+      "books": [
+        {"title": "English Compulsory SSC-I", "subject": "English", "publisher": "FBISE", "price": 6.000, "stock": "in"},
+        {"title": "Mathematics SSC-I", "subject": "Mathematics", "publisher": "FBISE", "price": 5.750, "stock": "in"},
+        {"title": "Physics SSC-I", "subject": "Physics", "publisher": "FBISE", "price": 6.250, "stock": "in"},
+        {"title": "Chemistry SSC-I", "subject": "Chemistry", "publisher": "FBISE", "price": 6.250, "stock": "low"},
+        {"title": "Biology SSC-I", "subject": "Biology", "publisher": "FBISE", "price": 6.000, "stock": "in"}
+      ]
+    },
+    {
+      "grade": "10",
+      "title": "Grade 10 (SSC-II) Core Set",
+      "setPrice": 12.250,
+      "stock": "in",
+      "books": [
+        {"title": "English Compulsory SSC-II", "subject": "English", "publisher": "FBISE", "price": 6.250, "stock": "in"},
+        {"title": "Mathematics SSC-II", "subject": "Mathematics", "publisher": "FBISE", "price": 6.000, "stock": "in"}
+      ]
+    },
+    {
+      "grade": "11",
+      "title": "Grade 11 (HSSC-I) Science Set",
+      "setPrice": 13.500,
+      "stock": "in",
+      "books": [
+        {"title": "English Compulsory HSSC-I", "subject": "English", "publisher": "FBISE", "price": 6.500, "stock": "in"},
+        {"title": "Physics HSSC-I", "subject": "Physics", "publisher": "FBISE", "price": 7.000, "stock": "in"}
+      ]
+    },
+    {
+      "grade": "12",
+      "title": "Grade 12 (HSSC-II) Science Set",
+      "setPrice": 14.000,
+      "stock": "out",
+      "books": [
+        {"title": "English Compulsory HSSC-II", "subject": "English", "publisher": "FBISE", "price": 6.750, "stock": "in"},
+        {"title": "Chemistry HSSC-II", "subject": "Chemistry", "publisher": "FBISE", "price": 7.250, "stock": "out"}
+      ]
+    },
+    {
+      "grade": "Stationery",
+      "title": "Common Stationery & Uniform",
+      "setPrice": 15.000,
+      "stock": "in",
+      "books": [
+        {"title": "A4 Notebook (single line)", "subject": "Stationery", "publisher": "School Store", "price": 0.750, "stock": "in"},
+        {"title": "Maths Squared Notebook", "subject": "Stationery", "publisher": "School Store", "price": 0.750, "stock": "in"},
+        {"title": "Uniform Set (shirt + trousers/skirt)", "subject": "Uniform", "publisher": "Approved Vendor", "price": 12.000, "stock": "in"},
+        {"title": "School Tie", "subject": "Uniform", "publisher": "Approved Vendor", "price": 1.500, "stock": "in"}
+      ]
+    }
+  ]
+}

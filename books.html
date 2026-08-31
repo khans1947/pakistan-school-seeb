@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#01411C">
+  <title>Books & Stock | Pakistan School Seeb</title>
+  <meta name="description" content="Check textbook prices and live stock availability at Pakistan School Seeb bookstore. Avoid long queues — see what's in stock before you visit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .books-controls { display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:1.75rem; align-items:center; }
+    .books-controls .search-box { flex:1; min-width:200px; }
+    .stock-badge { display:inline-flex; align-items:center; gap:.35rem; font-size:.75rem; font-weight:700; padding:.25rem .65rem; border-radius:999px; text-transform:uppercase; letter-spacing:.03em; }
+    .stock-badge.in { background:rgba(0,168,89,.15); color:#00A859; }
+    .stock-badge.low { background:rgba(212,175,55,.2); color:#B8860B; }
+    .stock-badge.out { background:rgba(239,68,68,.15); color:#DC2626; }
+    .books-note { display:flex; gap:.75rem; align-items:flex-start; padding:1rem 1.25rem; border-radius:.9rem; background:rgba(212,175,55,.12); border:1px solid rgba(212,175,55,.35); margin-bottom:1.5rem; font-size:.92rem; color:var(--text-secondary); }
+    .books-note strong { color:var(--text-primary); }
+    .books-summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin-bottom:1.75rem; }
+    .books-summary .stat-mini { text-align:center; padding:1rem; border-radius:1rem; }
+    .books-summary .stat-mini .n { font-size:1.6rem; font-weight:700; font-family:'Space Grotesk',sans-serif; color:var(--pk-emerald); }
+    .books-summary .stat-mini .l { font-size:.8rem; color:var(--text-muted); margin-top:.2rem; }
+    .set-grid { display:flex; flex-direction:column; gap:1rem; }
+    .set-card { overflow:hidden; }
+    .set-card-header { display:flex; flex-wrap:wrap; align-items:center; gap:1rem; padding:1.15rem 1.35rem; cursor:pointer; user-select:none; }
+    .set-card-header:hover { background:var(--pk-emerald-soft); }
+    .set-grade { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.15rem; min-width:3.5rem; color:var(--pk-green); }
+    [data-theme="dark"] .set-grade { color:var(--pk-emerald); }
+    .set-meta { flex:1; min-width:160px; }
+    .set-meta h3 { font-size:1rem; margin-bottom:.2rem; }
+    .set-meta p { font-size:.85rem; color:var(--text-muted); margin:0; }
+    .set-price { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.25rem; color:var(--pk-green); white-space:nowrap; }
+    [data-theme="dark"] .set-price { color:var(--pk-emerald); }
+    .set-price small { font-size:.75rem; font-weight:500; color:var(--text-muted); display:block; }
+    .set-chevron { transition:transform .25s; color:var(--text-muted); }
+    .set-card.open .set-chevron { transform:rotate(180deg); }
+    .set-body { display:none; border-top:1px solid var(--border-glass); padding:0 1.35rem 1.15rem; }
+    .set-card.open .set-body { display:block; }
+    .set-body table { width:100%; border-collapse:collapse; font-size:.9rem; margin-top:.75rem; }
+    .set-body th { text-align:left; padding:.5rem .6rem; font-size:.75rem; text-transform:uppercase; letter-spacing:.04em; color:var(--text-muted); border-bottom:1px solid var(--border-glass); }
+    .set-body td { padding:.55rem .6rem; border-bottom:1px solid var(--border-glass); }
+    .set-body tr:last-child td { border-bottom:none; }
+    .grade-chip.active, .stock-chip.active { background:var(--pk-emerald); color:white; border-color:var(--pk-emerald); }
+    #books-empty { display:none; text-align:center; padding:2.5rem 1rem; color:var(--text-muted); }
+
+    /* Mobile-first books layout */
+    @media (max-width: 768px) {
+      .books-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+      }
+      .books-controls .search-box {
+        min-width: 0;
+        width: 100%;
+      }
+      .filter-chips {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.4rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 0.15rem 0.1rem 0.45rem;
+        margin: 0 -0.15rem;
+        max-width: 100%;
+      }
+      .filter-chips::-webkit-scrollbar { display: none; }
+      .chip, .grade-chip, .stock-chip {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        font-size: 0.78rem;
+        padding: 0.4rem 0.7rem;
+      }
+      .books-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 0.65rem;
+      }
+      .books-summary .stat-mini {
+        padding: 0.85rem 0.5rem;
+      }
+      .books-summary .stat-mini .n {
+        font-size: 1.35rem;
+      }
+      .set-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.85rem;
+        width: 100%;
+        max-width: 100%;
+      }
+      .set-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+      .set-card-header {
+        display: grid !important;
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas:
+          "grade meta price"
+          "grade meta stock"
+          "chevron chevron chevron";
+        gap: 0.35rem 0.65rem;
+        align-items: start;
+        padding: 1rem;
+      }
+      .set-grade { grid-area: grade; min-width: 2.5rem; font-size: 1.05rem; }
+      .set-meta { grid-area: meta; min-width: 0; }
+      .set-meta h3 { font-size: 0.95rem; line-height: 1.3; }
+      .set-price { grid-area: price; text-align: right; font-size: 1.1rem; }
+      .set-card-header .stock-badge { grid-area: stock; justify-self: end; }
+      .set-chevron { grid-area: chevron; justify-self: center; margin-top: 0.25rem; }
+      .set-body {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .set-body table {
+        min-width: 480px;
+        font-size: 0.82rem;
+      }
+      .books-note {
+        font-size: 0.88rem;
+        padding: 0.85rem 1rem;
+      }
+    }
+    @media (max-width: 400px) {
+      .books-summary {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      .set-card-header {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+          "grade meta"
+          "price price"
+          "stock stock"
+          "chevron chevron";
+      }
+      .set-price { text-align: left; }
+      .set-card-header .stock-badge { justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-mesh" aria-hidden="true"></div>
+
+  <nav class="navbar" role="navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/school-logo.png" alt="Pakistan School Seeb" class="logo-img" width="42" height="42">
+        <div>
+          <span class="logo-full">Pakistan School Seeb</span><span class="logo-short">PSS Seeb</span>
+        </div>
+      </a>
+            <ul class="nav-links">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+        <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+        <li><a href="books.html" class="active" data-i18n="nav.books">Books</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Student Life</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"></button>
+        <button type="button" class="portal-btn" id="portal-btn" aria-label="Open portals">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+          </svg>
+          <span data-i18n="nav.portals">Portals</span>
+        </button>
+        <a href="admissions.html" class="btn btn-sm btn-primary nav-apply-btn" data-i18n="nav.apply"><span class="nav-apply-label">Apply Now</span></a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+    <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-lang-switch lang-switch" style="margin:0.5rem 0 0.75rem;display:inline-flex">
+      <button type="button" data-lang="en" class="active">EN</button>
+      <button type="button" data-lang="ar">ع</button>
+      <button type="button" data-lang="ur">اردو</button>
+    </div>
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="admissions.html" data-i18n="nav.admissions">Admissions</a>
+    <a href="academics.html" data-i18n="nav.academics">Academics</a>
+    <a href="books.html" class="active" data-i18n="nav.books">Books</a>
+    <a href="gallery.html" data-i18n="nav.gallery">Student Life</a>
+    <a href="contact.html" data-i18n="nav.contact">Contact</a>
+    <a href="admissions.html" class="btn btn-primary" style="margin-top:0.5rem;text-align:center" data-i18n="nav.apply"><span class="nav-apply-label">Apply Now</span></a>
+  </div>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="hero-pattern"></div>
+      <div class="container" style="position:relative;z-index:2">
+        <h1>Books &amp; Stock</h1>
+        <p>Check prices and availability before you visit — no more long queues for books that are out of stock.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="books-note">
+          <span style="font-size:1.4rem" aria-hidden="true">📚</span>
+          <div>
+            <strong>How this helps parents:</strong>
+            See which books are <em>In stock</em>, <em>Low stock</em>, or <em>Out of stock</em> and their prices (OMR).
+            Stock is updated by the school office. Always confirm at the bookstore if you need many copies.
+            <br><span id="books-hours"></span>
+          </div>
+        </div>
+
+        <div class="books-summary">
+          <div class="glass-card stat-mini"><div class="n" id="sum-total">–</div><div class="l">Book sets</div></div>
+          <div class="glass-card stat-mini"><div class="n" id="sum-in" style="color:#00A859">–</div><div class="l">In stock</div></div>
+          <div class="glass-card stat-mini"><div class="n" id="sum-low" style="color:#B8860B">–</div><div class="l">Low stock</div></div>
+          <div class="glass-card stat-mini"><div class="n" id="sum-out" style="color:#DC2626">–</div><div class="l">Out of stock</div></div>
+        </div>
+
+        <div class="books-controls">
+          <div class="search-box">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="search" id="book-search" placeholder="Search by title, subject, grade..." aria-label="Search books">
+          </div>
+          <div class="filter-chips" id="grade-filters">
+            <button type="button" class="chip grade-chip active" data-grade="all">All</button>
+            <button type="button" class="chip grade-chip" data-grade="KG">KG</button>
+            <button type="button" class="chip grade-chip" data-grade="1">G1</button>
+            <button type="button" class="chip grade-chip" data-grade="2">G2</button>
+            <button type="button" class="chip grade-chip" data-grade="3">G3</button>
+            <button type="button" class="chip grade-chip" data-grade="4">G4</button>
+            <button type="button" class="chip grade-chip" data-grade="5">G5</button>
+            <button type="button" class="chip grade-chip" data-grade="6">G6</button>
+            <button type="button" class="chip grade-chip" data-grade="7">G7</button>
+            <button type="button" class="chip grade-chip" data-grade="8">G8</button>
+            <button type="button" class="chip grade-chip" data-grade="9">G9</button>
+            <button type="button" class="chip grade-chip" data-grade="10">G10</button>
+            <button type="button" class="chip grade-chip" data-grade="11">G11</button>
+            <button type="button" class="chip grade-chip" data-grade="12">G12</button>
+          </div>
+          <div class="filter-chips" id="stock-filters">
+            <button type="button" class="chip stock-chip active" data-stock="all">Any stock</button>
+            <button type="button" class="chip stock-chip" data-stock="in">In stock</button>
+            <button type="button" class="chip stock-chip" data-stock="low">Low</button>
+            <button type="button" class="chip stock-chip" data-stock="out">Out</button>
+          </div>
+        </div>
+
+        <div class="set-grid" id="sets-grid">
+          <div class="glass-card" style="padding:2rem;text-align:center;color:var(--text-muted)">Loading book sets…</div>
+        </div>
+        <div id="books-empty">
+          <p>No sets match your filters. Try another grade or clear the search.</p>
+        </div>
+
+        <p style="margin-top:1.25rem;font-size:0.85rem;color:var(--text-muted);text-align:center">
+          Last updated: <span id="books-updated">–</span> ·
+          Need help? Use the chat assistant or
+          <a href="https://wa.me/96824464345?text=Assalamu%20Alaikum%2C%20I%20have%20a%20question%20about%20books%20stock." target="_blank" rel="noopener" style="color:var(--pk-emerald)">WhatsApp the school</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="assets/school-logo.png" alt="Pakistan School Seeb crest" class="logo-img" width="42" height="42">
+            <span style="color:white">Pakistan School Seeb</span>
+          </div>
+          <p>Nurturing future leaders through holistic education in Al Seeb, Muscat.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+            <li><a href="books.html">Books &amp; Stock</a></li>
+            <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="admissions.html#fee">Fee Structure</a></li>
+            <li><a href="admissions.html#track">Track Application</a></li>
+            <li><a href="books.html">Book Prices &amp; Stock</a></li>
+            <li><a href="contact.html">Campus Map</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem">Building 356, Way 5889<br>Al Chradi, Al Seeb, Muscat</li>
+            <li><a href="tel:+96824464345">+968 2446 4345</a></li>
+            <li><a href="mailto:principal.seeb@pakistanschool.edu.om">principal.seeb@pakistanschool.edu.om</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Pakistan School Seeb · Pakistan Schools Oman. All rights reserved.</span>
+        <span>Light the Torch for Knowledge</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Portal Modal -->
+  <div class="modal-overlay" id="portal-modal" role="dialog" aria-modal="true" aria-labelledby="portal-title">
+    <div class="modal">
+      <button class="modal-close" aria-label="Close">×</button>
+      <h3 id="portal-title">Quick Portals</h3>
+      <p style="color:var(--text-secondary);margin-bottom:1.5rem;font-size:0.95rem">Secure external portals for our community.</p>
+      <div class="portal-links">
+        <a href="https://www.pakistanschool.edu.om/" target="_blank" rel="noopener" class="portal-link">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg></div>
+          <div><strong>Student LMS</strong><span>Learning management & assignments</span></div>
+        </a>
+        <a href="https://www.pakistanschool.edu.om/" target="_blank" rel="noopener" class="portal-link">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div><strong>Parent Portal</strong><span>Attendance, fees & progress reports</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://wa.me/96824464345?text=Assalamu%20Alaikum%2C%20I%20have%20a%20question%20about%20books%20stock."
+     class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <span class="wa-tooltip">Books / Admissions WhatsApp</span>
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.85 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function () {
+    let sets = [];
+    let gradeFilter = 'all';
+    let stockFilter = 'all';
+    const grid = document.getElementById('sets-grid');
+    const empty = document.getElementById('books-empty');
+    const search = document.getElementById('book-search');
+
+    function stockLabel(s) {
+      if (s === 'in') return '<span class="stock-badge in">● <span data-i18n="stock.in">In Stock</span></span>';
+      if (s === 'low') return '<span class="stock-badge low">● <span data-i18n="stock.low">Low Stock</span></span>';
+      return '<span class="stock-badge out">● <span data-i18n="stock.out">Out of Stock</span></span>';
+    }
+    function fmt(p) { return Number(p).toFixed(3); }
+
+    function render() {
+      const q = (search.value || '').toLowerCase().trim();
+      const filtered = sets.filter(s => {
+        const matchGrade = gradeFilter === 'all' || String(s.grade) === gradeFilter || (gradeFilter === 'All' && s.grade === 'Stationery');
+        const matchStock = stockFilter === 'all' || s.stock === stockFilter;
+        const text = (s.title + ' ' + s.grade + ' ' + (s.books||[]).map(b => b.title + ' ' + b.subject).join(' ')).toLowerCase();
+        return matchGrade && matchStock && (!q || text.includes(q));
+      });
+      if (!filtered.length) {
+        grid.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+      grid.innerHTML = filtered.map((s, i) => {
+        const rows = (s.books || []).map(b => `
+          <tr>
+            <td>${b.subject}</td>
+            <td>${b.title}</td>
+            <td style="color:var(--text-muted)">${b.publisher||''}</td>
+            <td style="font-weight:600">${fmt(b.price)}</td>
+            <td>${stockLabel(b.stock)}</td>
+          </tr>`).join('');
+        return `
+        <article class="glass-card set-card" data-i="${i}">
+          <div class="set-card-header" role="button" tabindex="0" aria-expanded="false">
+            <div class="set-grade">${s.grade === 'Stationery' ? 'STN' : s.grade}</div>
+            <div class="set-meta">
+              <h3>${s.title}</h3>
+              <p>${(s.books||[]).length} items · click to view individual books</p>
+            </div>
+            <div class="set-price">${fmt(s.setPrice)} <small>OMR full set</small></div>
+            ${stockLabel(s.stock)}
+            <svg class="set-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="set-body">
+            <table>
+              <thead><tr><th>Subject</th><th>Book</th><th>Publisher</th><th>Price</th><th>Stock</th></tr></thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+        </article>`;
+      }).join('');
+
+      grid.querySelectorAll('.set-card-header').forEach(h => {
+        const toggle = () => {
+          const card = h.closest('.set-card');
+          const open = card.classList.toggle('open');
+          h.setAttribute('aria-expanded', open);
+        };
+        h.addEventListener('click', toggle);
+        h.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      });
+    }
+
+    function updateSummary(list) {
+      document.getElementById('sum-total').textContent = list.length;
+      document.getElementById('sum-in').textContent = list.filter(s => s.stock === 'in').length;
+      document.getElementById('sum-low').textContent = list.filter(s => s.stock === 'low').length;
+      document.getElementById('sum-out').textContent = list.filter(s => s.stock === 'out').length;
+    }
+
+    fetch('data/books.json').then(r => r.json()).then(data => {
+      sets = data.sets || [];
+      updateSummary(sets);
+      document.getElementById('books-updated').textContent = data.updated || '—';
+      if (data.bookstoreHours) {
+        document.getElementById('books-hours').innerHTML = '<strong>Bookstore hours:</strong> ' + data.bookstoreHours;
+      }
+      render();
+    }).catch(() => {
+      grid.innerHTML = '<div class="glass-card" style="padding:2rem;text-align:center;color:#DC2626">Could not load books data.</div>';
+    });
+
+    search.addEventListener('input', render);
+    document.querySelectorAll('.grade-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.grade-chip').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        gradeFilter = btn.dataset.grade;
+        render();
+      });
+    });
+    document.querySelectorAll('.stock-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.stock-chip').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        stockFilter = btn.dataset.stock;
+        render();
+      });
+    });
+  })();
+  </script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/i18n.js"></script>
+
+</body>
+</html>

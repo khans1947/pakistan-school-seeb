@@ -1,0 +1,53 @@
+rules_version = '2';
+// Pakistan School Seeb — Firestore rules
+// Deploy: Firebase Console → Firestore → Rules → Publish
+//
+// Inquiries & applications allow update so the static admin panel can
+// change status. Lock these down with Firebase Auth when you go fully live.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /content/{docId} {
+      allow read: if true;
+      allow write: if true; // tighten with Auth later
+    }
+
+    match /applications/{appId} {
+      allow create: if
+        request.resource.data.keys().hasAll(['trackingId', 'studentName', 'submittedAt']) &&
+        request.resource.data.studentName is string &&
+        request.resource.data.studentName.size() > 1 &&
+        request.resource.data.studentName.size() < 120;
+      allow read: if true;
+      allow update: if true; // admin status changes
+      allow delete: if true;
+    }
+
+    match /inquiries/{inqId} {
+      allow create: if
+        request.resource.data.keys().hasAll(['name', 'message']) &&
+        request.resource.data.name is string &&
+        request.resource.data.name.size() < 120 &&
+        request.resource.data.message is string &&
+        request.resource.data.message.size() < 5000;
+      allow read: if true;   // track lookup + admin list
+      allow update: if true; // admin status changes — REQUIRED for live sync
+      allow delete: if true;
+    }
+
+    match /inventory/{id} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /notices/{id} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

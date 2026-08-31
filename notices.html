@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notices & Circulars | Pakistan School Seeb</title>
+  <meta name="description" content="School circulars, exam schedules, and notices from Pakistan School Seeb, Al Seeb, Muscat, Oman.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="js/firebase-config.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <nav class="navbar"><div class="container nav-inner">
+    <a href="index.html" class="logo"><img src="assets/school-logo.png" class="logo-img" width="40" height="40" alt=""><span class="logo-full">Pakistan School Seeb</span><span class="logo-short">PSS Seeb</span></a>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"></button>
+      <a href="index.html" class="btn btn-sm btn-secondary">Home</a>
+    </div>
+  </div></nav>
+  <main id="main-content">
+    <section class="page-hero"><div class="container">
+      <h1 data-i18n="notices.title">Notices & Circulars</h1>
+      <p>Searchable archive of school announcements for parents and students.</p>
+    </div></section>
+    <section class="section"><div class="container">
+      <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem">
+        <input type="search" id="notice-search" class="form-control" placeholder="Search notices…" style="flex:1;min-width:180px">
+        <select id="notice-cat" class="form-control" style="max-width:180px">
+          <option value="all">All categories</option>
+          <option value="exams">Exams</option>
+          <option value="circulars">Circulars</option>
+          <option value="events">Events</option>
+          <option value="urgent">Urgent</option>
+        </select>
+      </div>
+      <div id="notices-list" class="stream-grid"></div>
+    </div></section>
+  </main>
+  <footer class="footer" style="padding:2rem 0;text-align:center"><div class="container">
+    <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+  </div></footer>
+  <script src="js/cloud.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+  (async function(){
+    if (window.PSSCloud) await PSSCloud.init();
+    let notices = [];
+    try { notices = await PSSCloud.listNotices(); } catch(e){}
+    if (!notices.length) {
+      try {
+        const c = await fetch('data/content.json').then(r=>r.json());
+        notices = c.notices || [];
+      } catch(e){}
+    }
+    const list = document.getElementById('notices-list');
+    function render() {
+      const q = (document.getElementById('notice-search').value||'').toLowerCase();
+      const cat = document.getElementById('notice-cat').value;
+      const filtered = notices.filter(n => {
+        const hay = ((n.title||'')+' '+(n.summary||'')+' '+(n.category||'')).toLowerCase();
+        if (q && !hay.includes(q)) return false;
+        if (cat === 'urgent' && n.priority !== 'high') return false;
+        if (cat !== 'all' && cat !== 'urgent' && (n.category||'') !== cat) return false;
+        return true;
+      });
+      list.innerHTML = filtered.map(n => `
+        <article class="glass-card" style="padding:1.25rem">
+          <div style="display:flex;justify-content:space-between;gap:0.5rem">
+            <span class="badge">${n.category||'notice'}</span>
+            <time style="font-size:0.8rem;color:var(--text-muted)">${n.day||''} ${n.month||''} ${n.publishDate||''}</time>
+          </div>
+          <h3 style="margin:0.75rem 0 0.35rem;font-size:1.05rem">${n.title||''}</h3>
+          <p style="color:var(--text-secondary);font-size:0.9rem;margin:0">${n.summary||''}</p>
+          ${n.pdfUrl ? `<a href="${n.pdfUrl}" class="btn btn-sm btn-secondary" style="margin-top:0.75rem" target="_blank" rel="noopener">Download PDF</a>` : ''}
+        </article>
+      `).join('') || '<p style="color:var(--text-muted)">No notices found.</p>';
+    }
+    document.getElementById('notice-search').addEventListener('input', render);
+    document.getElementById('notice-cat').addEventListener('change', render);
+    render();
+    if (PSSCloud.subscribeContent) {
+      PSSCloud.subscribeContent(d => {
+        if (d && d.notices) { notices = d.notices; render(); }
+      });
+    }
+  })();
+  </script>
+<script src="js/chatbot.js" defer></script>
+</body>
+</html>

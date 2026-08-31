@@ -1,0 +1,172 @@
+[
+  {
+    "id": "muscat",
+    "name": "PSM Main Campus (Ruwi)",
+    "coords": {
+      "x": 739,
+      "y": 323
+    },
+    "address": "Ruwi, Muscat, Sultanate of Oman",
+    "phone": "+968 24 700 800",
+    "email": "info@pakistanschool.edu.om",
+    "principal": "To be confirmed",
+    "established": "Founding campus",
+    "image": "assets/campus-photo.jpg",
+    "link": "https://www.pakistanschool.edu.om/",
+    "highlight": false,
+    "blurb": "Flagship campus of Pakistan Schools Oman in Ruwi. Home to the Board of Directors, central administration, and the network’s widest academic and co-curricular offering.",
+    "region": "Muscat",
+    "highlights": [
+      "Network HQ",
+      "Main campus",
+      "Ruwi, Muscat"
+    ],
+    "curriculum": "FBISE · Cambridge pathways",
+    "grades": "KG – Grade 12"
+  },
+  {
+    "id": "seeb",
+    "name": "PSM Seeb Branch",
+    "coords": {
+      "x": 700,
+      "y": 315
+    },
+    "address": "Building 356, Way 5889, Al Chradi, Al Seeb, Muscat",
+    "phone": "+968 2446 4345",
+    "email": "principal.seeb@pakistanschool.edu.om",
+    "principal": "To be confirmed",
+    "established": "2014",
+    "image": "assets/campus-photo.jpg",
+    "link": "contact.html",
+    "highlight": true,
+    "blurb": "Pakistan School Seeb serves families across Al Seeb with a full Kindergarten to Grade 12 programme. Students follow FBISE and Cambridge routes in a community of 1,300+ learners under the Ministry of Education.",
+    "region": "Al Seeb",
+    "highlights": [
+      "You are here",
+      "1,300+ students",
+      "Est. 2014"
+    ],
+    "curriculum": "FBISE · Cambridge IGCSE",
+    "grades": "KG – Grade 12"
+  },
+  {
+    "id": "sohar",
+    "name": "PSM Sohar Branch",
+    "coords": {
+      "x": 562,
+      "y": 250
+    },
+    "address": "Sohar, Al Batinah North, Sultanate of Oman",
+    "phone": "+968 XX XXX XXX",
+    "email": "sohar@pakistanschool.edu.om",
+    "principal": "To be confirmed",
+    "established": "Network branch",
+    "image": "assets/campus-photo.jpg",
+    "link": "https://www.pakistanschool.edu.om/",
+    "highlight": false,
+    "blurb": "Northern campus in Sohar supporting expatriate and local families in Al Batinah North. Shares academic standards, teacher development, and inter-branch events with the wider PSM network.",
+    "region": "Al Batinah North",
+    "highlights": [
+      "Al Batinah North",
+      "Active campus"
+    ],
+    "curriculum": "FBISE aligned",
+    "grades": "Primary – Secondary"
+  },
+  {
+    "id": "suwaiq",
+    "name": "PSM Suwaiq Branch",
+    "coords": {
+      "x": 627,
+      "y": 300
+    },
+    "address": "Suwaiq, Al Batinah, Sultanate of Oman",
+    "phone": "+968 XX XXX XXX",
+    "email": "suwaiq@pakistanschool.edu.om",
+    "principal": "To be confirmed",
+    "established": "Network branch",
+    "image": "assets/campus-photo.jpg",
+    "link": "https://www.pakistanschool.edu.om/",
+    "highlight": false,
+    "blurb": "Suwaiq campus extends quality Pakistani curriculum education along the Al Batinah coast, linked to Muscat through shared policies, assessments, and student activities.",
+    "region": "Al Batinah",
+    "highlights": [
+      "Al Batinah",
+      "Active campus"
+    ],
+    "curriculum": "FBISE aligned",
+    "grades": "Primary – Secondary"
+  },
+  {
+    "id": "buraimi",
+    "name": "PSM Al Buraimi Branch",
+    "coords": {
+      "x": 498,
+      "y": 250
+    },
+    "address": "Al Buraimi, Sultanate of Oman",
+    "phone": "+968 XX XXX XXX",
+    "email": "buraimi@pakistanschool.edu.om",
+    "principal": "To be confirmed",
+    "established": "Network branch",
+    "image": "assets/campus-photo.jpg",
+    "link": "https://www.pakistanschool.edu.om/",
+    "highlight": false,
+    "blurb": "Al Buraimi branch serves communities in the north-west, close to the border, with the same academic framework and pastoral care ethos as other Pakistan School Muscat campuses.",
+    "region": "Al Buraimi",
+    "highlights": [
+      "North-west Oman",
+      "Active campus"
+    ],
+    "curriculum": "FBISE aligned",
+    "grades": "Primary – Secondary"
+  },
+  {
+    "id": "nizwa",
+    "name": "PSM Nizwa Branch",
+    "coords": {
+      "x": 635,
+      "y": 400
+    },
+    "address": "Nizwa, Ad Dakhiliyah, Sultanate of Oman",
+    "phone": "+968 XX XXX XXX",
+    "email": "nizwa@pakistanschool.edu.om",
+    "principal": "To be confirmed",
+    "established": "Network branch",
+    "image": "assets/campus-photo.jpg",
+    "link": "https://www.pakistanschool.edu.om/",
+    "highlight": false,
+    "blurb": "Interior campus in Nizwa (Ad Dakhiliyah), bringing the Pakistan Schools Oman experience to families in the heart of the Sultanate with consistent standards and network events.",
+    "region": "Ad Dakhiliyah",
+    "highlights": [
+      "Ad Dakhiliyah",
+      "Interior region"
+    ],
+    "curriculum": "FBISE aligned",
+    "grades": "Primary – Secondary"
+  },
+  {
+    "id": "salalah",
+    "name": "PSM Salalah Branch",
+    "coords": {
+      "x": 335,
+      "y": 905
+    },
+    "address": "Salalah, Dhofar, Sultanate of Oman",
+    "phone": "+968 XX XXX XXX",
+    "email": "salalah@pakistanschool.edu.om",
+    "principal": "To be confirmed",
+    "established": "Network branch",
+    "image": "assets/campus-photo.jpg",
+    "link": "https://www.pakistanschool.edu.om/",
+    "highlight": false,
+    "blurb": "Southern campus in Salalah, Dhofar — one of the network’s established schools serving the southern region with the same commitment to academic excellence and character development.",
+    "region": "Dhofar",
+    "highlights": [
+      "Dhofar",
+      "Southern Oman"
+    ],
+    "curriculum": "FBISE aligned",
+    "grades": "Primary – Secondary"
+  }
+]

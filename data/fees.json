@@ -1,0 +1,12 @@
+{
+  "academicYear": "2025-26",
+  "currency": "OMR",
+  "note": "Indicative fees subject to Board approval. Installment plans available.",
+  "grades": [
+    {"grade": "KG", "admission": 25, "tuitionAnnual": 420, "tuitionTerm": 140, "books": 8.5, "uniformEst": 18},
+    {"grade": "1-5", "admission": 30, "tuitionAnnual": 480, "tuitionTerm": 160, "books": 11, "uniformEst": 20},
+    {"grade": "6-8", "admission": 35, "tuitionAnnual": 540, "tuitionTerm": 180, "books": 15, "uniformEst": 22},
+    {"grade": "9-10", "admission": 40, "tuitionAnnual": 600, "tuitionTerm": 200, "books": 19, "uniformEst": 24},
+    {"grade": "11-12", "admission": 45, "tuitionAnnual": 660, "tuitionTerm": 220, "books": 22, "uniformEst": 24}
+  ]
+}

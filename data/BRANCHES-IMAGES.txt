@@ -1,0 +1,61 @@
+Pakistan School Seeb — Branch photos & logo (manual guide)
+=========================================================
+
+1) CAMPUS HERO PHOTO (right panel image)
+---------------------------------------
+File: data/branches.json
+
+Each campus has an "image" field, for example:
+
+  {
+    "id": "seeb",
+    "name": "PSM Seeb Branch",
+    "image": "assets/campus-photo.jpg",
+    ...
+  }
+
+To use a different photo per branch:
+
+  a) Put your photo in the assets folder, e.g.
+       assets/branches/seeb.jpg
+       assets/branches/sohar.jpg
+       assets/branches/salalah.jpg
+
+  b) Edit data/branches.json and set each campus "image" path:
+       "image": "assets/branches/seeb.jpg"
+
+  c) Save the file and hard-refresh the website (Ctrl+F5).
+
+Tips for photos:
+  - Landscape (wider than tall) works best
+  - Around 1200×800 px is ideal
+  - JPG or WebP, under ~300 KB if possible
+
+
+2) CIRCLE LOGO ON THE PHOTO (bottom-left badge)
+-----------------------------------------------
+File used by the site:
+  assets/school-logo-pin.png
+
+Replace that file with your school crest (square or circular PNG).
+Keep the same filename so you do not need to edit code.
+
+Optional: also update
+  assets/school-logo.png      (navbar / footer)
+  assets/school-logo-hd.png   (if used elsewhere)
+
+
+3) MAP PIN LOGO
+---------------
+Map pins use:
+  assets/school-logo-pin.png
+
+Same file as the circle badge — replacing it updates both.
+
+
+4) BRANCH TEXT / CONTACT
+------------------------
+Still in data/branches.json:
+  name, address, phone, email, blurb, highlights, curriculum, grades, link
+
+Edit the JSON carefully (keep commas and quotes valid).
